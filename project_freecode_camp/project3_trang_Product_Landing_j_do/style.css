@@ -1,0 +1,149 @@
+body {
+  font-family: sans-serif;
+  background-color: hsl(180, 1%, 94%);
+}
+
+button {
+  margin: 10px;
+  background-color: rgba(250, 225, 35, 0.8);
+  border-radius: 5%;
+  border: 2px;
+  padding: 10px;
+  font-size: 17px;
+}
+button:hover {
+  background-color: orange;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+footer {
+  background-color: lightgray;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 20px 40px;
+  grid-template-columns: 270px;
+  justify-content: flex-end;
+  margin: 30px 10% 0 10%;
+}
+
+.class-flex {
+  display: flex;
+}
+
+#video {
+  background-color: white;
+  display: flex;
+  margin: 30px auto 30px;
+}
+
+#nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: hsl(180, 1%, 94%);
+  margin: 0 auto;
+}
+
+#headAndForm {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#header-img {
+  width: 400px;
+}
+
+#price {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+}
+
+#price_tenor {
+  border-style: solid;
+  border-radius: 2%;
+}
+
+#price_bass {
+  border-style: solid;
+  border-radius: 2%;
+}
+
+#price_valve {
+  border-style: solid;
+  border-radius: 2%;
+}
+
+#email {
+  height: 23px;
+  width: 30%;
+}
+
+#submit {
+  padding: 2px 12px;
+  font-weight: 900;
+  width: 160px;
+  margin: 10px;
+  background-color: rgba(250, 225, 35, 0.8);
+  border-radius: 5%;
+  border: 2px;
+  font-size: 17px;
+}
+
+#submit:hover {
+  background-color: orange;
+}
+
+#footer_link {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (max-width: 720px) {
+  footer {
+    margin: 30px 0 0;
+  }
+  #price {
+    flex-direction: column;
+  }
+  #price_tenor {
+    margin: 0 30%;
+  }
+  #price_bass {
+    margin: 0 30%;
+  }
+  #price_valve {
+    margin: 0 30%;
+  }
+
+  #nav-bar {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+  }
+
+  #header-img {
+    margin: auto;
+  }
+
+  #img_1,
+  #img_3 {
+    width: 70px;
+    height: 70px;
+  }
+  #img_2 {
+    width: 120px;
+    height: 70px;
+  }
+}

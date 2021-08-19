@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="myCanvas">
+        <!--co the them width height neu muon,mac dinh la rong 300, cao 150-->
+        <p>Add suitable fallback here</p>
+    </canvas>
+    <script>
+        //tl,dat canvas = chieu rong khung nhin
+        const canvas = document.querySelector('.myCanvas');
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+        //lay boi canh
+        const ctx = canvas.getContext('2d'); //con gitri khac la webgl,webgl2
+        //bay h ctx chua 1 dt CanvasRenderingContext2D
+        ctx.fillStyle = 'rgb(0,0,0)'; //thiet lap mau to
+        ctx.fillRect(0, 0, width, height); //ve hinh cn baophu toan bo web (0,0)->(width,height)
+
+        //ve hinh anh bang .drawImage() co ban co 3 tham so: tham chien den hinh anh, toa do x,y
+        //lay nguon anh nhung vao canvas
+        let image = new Image(); //tao dt
+        image.src = 'firefox.png'; //dat nguon
+        //de dam bao hinh anh da dc tai xuong sd sk onload
+        image.onload = () => {
+            ctx.drawImage(image, 50, 50);
+            //tham so: nguon anh,vi tri cat anh,chieu rong,cao phan muon cat
+            //toa do ve anh vua cat, chieu rong cao ve anh
+            ctx.drawImage(image, 20, 20, 185, 175, 300, 50, 185, 175);
+        }
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+#filter-label {
+  position:relative;
+  top:2.5em;
+  left:40%;
+}
+@media  (max-width:780px) {
+  #filter-label {
+    position:relative;
+    top:2.5em;
+    left:0;
+  }
+}

@@ -1,0 +1,118 @@
+@mixin editor {
+    width: 45vw;
+    height: 90vh;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: -2px -2px 2px 2px rgba(138, 135, 135, 0.644);
+    margin-top: 1em;
+
+    textarea {
+        width: 96%;
+        height: 93%;
+        resize: none;
+        border: 10px solid;
+        border-image-slice: 1;
+        border-width: 5px;
+        border-image-source: linear-gradient(135deg, #743ad5, #d53a9d);
+        background-color: rgb(31, 29, 29);
+        color: whitesmoke;
+    }
+}
+
+@mixin preview {
+    width: 45vw;
+    height: auto;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: -2px -2px 2px 2px rgba(138, 135, 135, 0.644);
+
+    img {
+        max-width: 100%;
+    }
+
+    code {
+        background: white;
+        font-weight: bold;
+    }
+
+    pre {
+        display: block;
+        overflow: auto;
+        background: white;
+        padding: 5px;
+        line-height: 1.2;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th {
+            background-color: rgba(159, 246, 252, 0.568);
+            border: 2px solid black;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        td {
+            background-color: white;
+            border: 2px solid black;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+}
+
+body {
+    display: flex;
+    flex-flow: wrap column;
+    background-color: rgba(255, 248, 220, 0.76);
+
+    #contain {
+        display: flex;
+        justify-content: space-around;
+        flex: 50;
+
+        #tool-bar {
+            border-bottom-width: 3px;
+            border-bottom-style: solid;
+            border-image: linear-gradient(to right, rgba(0, 2, 19, 0.932), rgb(99, 99, 243), rgba(0, 0, 0, 0)) 1; //border tuyen tinh
+            // border-image: linear-gradient(to right,rgb(185, 35, 135),rgb(240, 102, 233), rgba(0, 0, 0, 0)) 1;
+            margin-bottom: 5px;
+
+            span {
+                display: inline-block;
+                width: 95%;
+                font-size: large;
+            }
+        }
+
+        #editorSmall {
+            @include editor();
+
+        }
+
+        #editorBig {
+            @include editor();
+
+            margin-top: 1em;
+            width: 90vw;
+        }
+
+        #previewSmall {
+            @include preview();
+        }
+
+        #previewBig {
+            @include preview();
+            margin-top: 1em;
+            width: 90vw;
+        }
+    }
+}
+
+#hide {
+    display: none;
+}

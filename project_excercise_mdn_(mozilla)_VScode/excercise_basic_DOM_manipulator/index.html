@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple DOM example</title>
+    <style>
+        .highlight {
+            color: white;
+            background-color: black;
+            padding: 10px;
+            width: 250px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <img src="dinosaur.png"
+            alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+    </section>
+
+    <script>
+        //tham chieu den lien ket Document.querySelector()
+        const link = document.querySelector('a');
+        //thay doi noi dung vd trong lien ket Node.textContent()
+        link.textContent = 'Mozilla Developer Network';
+        //thay doi url lk tro den
+        link.href = 'https://developer.mozilla.org';
+        //lay tham chieu den nhieu phan tu Document.querySelectorAll()
+        //tra ve tham chieu den chung trong mot doi tuong giong mang goi la NodeList
+
+        //tao nut,pt moi bang Document.createElement()
+        const sect = document.querySelector('section');
+        const para = document.createElement('p');
+        para.textContent = 'We hope you enjoyed the ride.';
+        //noi pt vao cuoi bang Node.appendChild()
+        sect.appendChild(para);
+        //them nut van ban(textNode) Document.createTextNode()
+        const text = document.createTextNode(' - the premier source for web development knowledge.');
+        //noi nut vb vao doan van(p) chua lk(a) nam ben trong
+        const linkPara = document.querySelector('p');
+        linkPara.appendChild(text);
+
+        //di chuyen p co a xuoi duoi section
+        sect.appendChild(linkPara);
+        //neu mon tao ban sao va then phai
+        //su dung Node.cloneNode() truyen
+        //true sao chep nut vao toan bo cay con gom ca van ban,text
+        //false chi nut dc nhan ban
+        let linkParaClone = linkPara.cloneNode(true); //tao ban clone
+        sect.appendChild(linkParaClone); //chen vao cuoi
+
+        //xoa lay tc den cha, con dung Node.removeChild()
+        sect.removeChild(linkPara);
+        //xoa nut chi dua tham chieu chinh no
+        linkPara.remove();
+        // trong ca td cu hon can lay nut cha(Node.parentNode) roi removeChild()
+        linkParaClone.parentNode.removeChild(linkParaClone);
+
+        //kieu inline HTMLElement.style
+        // para.style.color = 'white';
+        // para.style.backgroundColor = 'black';
+        // para.style.padding = '10px';
+        // para.style.width = '250px';
+        // para.style.textAlign = 'center';
+
+        //tao kieu bang Element.setAttribute()
+        //2 doi so 1 la thuoc tinh muon dat 2 la gtri
+        para.setAttribute('class', 'highlight');
+        //tao style bang lop dc chon boi quy tac css
+    </script>
+</body>
+
+</html>

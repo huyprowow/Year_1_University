@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Web Audio example</title>
+    <style>
+        input {
+            height: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio src="Halzion-YOASOBI.mp3"></audio>
+
+    <button class="paused">Play</button>
+    <br>
+    <input type="range" min="0" max="1" step="0.01" value="1" class="volume">
+
+    <script>
+        //tao audioContext de xu li track
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioContext();
+        //gan tham chieu audio,btn(dung,phat),input(thanh range tang am)
+        const audioElement = document.querySelector('audio');
+        const playBtn = document.querySelector('button');
+        const volumeSlider = document.querySelector('.volume');
+
+        //tao mot nut dai dien cho nguon am lay tu <audio>
+        const audioSource = audioCtx.createMediaElementSource(audioElement);
+
+        playBtn.addEventListener('click', function () {
+            // kiểm tra xem ngữ cảnh context có ở trạng thái bị tạm ngưng
+            //hay không (chính sách tự động phát)
+            if (audioCtx.state === "suspended") {
+                audioCtx.resume();
+            }
+
+            //neu nhu bi dung thi phat, neu phat thi dung
+            if (this.getAttribute('class') === 'paused') {
+                audioElement.play();
+                this.setAttribute('class', 'playing');
+                this.textContent = "Pause";
+            } else if (this.getAttribute('class') === 'playing') {
+                audioElement.pause();
+                this.setAttribute('class', 'paused');
+                this.textContent = "Play";
+            }
+        });
+
+        //tao doi tuong GainNode de dieu chinh am luong cua am thanh duoc
+        //cung cap gtra tri boi input range volumeSlider
+        const gainNode = audioCtx.createGain();
+        volumeSlider.addEventListener('input', function () {
+            gainNode.gain.value = this.value; //gtri tang giam aam bang input range
+        });
+
+        //ket noi cac nut trong bieu do am thanh
+        audioSource.connect(gainNode).connect(audioCtx.destination);
+    </script>
+
+</body>
+
+</html>

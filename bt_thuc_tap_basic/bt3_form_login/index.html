@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/6310d1a086.js" crossorigin="anonymous"></script>
+    <script defer src="main.js"></script>
+    <title>form_login</title>
+</head>
+
+<body>
+    <div id="form-login">
+        <button id="clear">x</button>
+        <h3>Member login</h3>
+        <form>
+            <label for="username">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" value="" placeholder="username" required>
+            </label>
+            <br>
+            <label for="password">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" value="" placeholder="password" required>
+            </label>
+            <input type="submit" id="btn-login" value="Login"></input>
+            <span id="posAlert1"></span>
+        </form>
+        <a href="#">Forgot Password?</a>
+    </div>
+    <div id="form-reset">
+        <button id="clear2">x</button>
+        <h3>Forgot password</h3>
+        <form>
+            <label for="old-password">
+                <i class="fas fa-lock"></i>
+                <input type="text" id="old-password" value="" placeholder="old password" required>
+            </label>
+            <br>
+            <label for="password-reset">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password-reset" value="" placeholder="new password" required>
+            </label>
+            <input type="submit" id="btn-reset" value="Reset"></input>
+            <span id="posAlert2"></span>
+        </form>
+    </div>
+</body>
+
+</html>

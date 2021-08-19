@@ -1,0 +1,109 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider, connect } from 'react-redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+
+import rootReducer from './redux/reducers'
+
+// Redux:
+const ADD = 'ADD';//tạo hành động
+
+const addMessage = (message) => {//action creator để tạo hành động
+  return {
+    type: ADD,
+    message: message
+  }
+};
+
+const messageReducer = (state = [], action) => {//tạo reducer để xử lí hành động
+  switch (action.type) {
+    case ADD:
+      return [
+        ...state,
+        action.message
+      ];
+    default:
+      return state;
+  }
+};
+
+const store = createStore(messageReducer);//tạo store để lưu trữ state truyền vào reducer để xử lí hành động 
+
+// React:
+//const Provider = ReactRedux.Provider;//tạo Provider(nhà cung cấp) cung cấp store từ redux cho component react qua AppWrapper
+//const connect = ReactRedux.connect;//tạo connent để kết nối Redux với react (map state và dispatch(gửi) hàm xử lí hành động)( thực chất là subcribe() và dispatch() ) 
+
+// Change code below this line
+class Presentational extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+//messages:[]//xóa local state vì bây giờ mesages được quản lí bởi store
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.submitMessage = this.submitMessage.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      input: event.target.value
+    });
+  }
+  submitMessage() {
+//hành động bây giờ được xử lí bởi reducer qua this.props.submitNewMessage nhận từ prop bởi dispatch
+    this.props.submitNewMessage(this.state.input);
+this.setState({input:''});//messages h đc quản lí bởi store redux
+
+  //  this.setState((state) => ({
+  //  input: '',
+  //  messages: state.messages.concat(state.input)
+  // }));
+  }
+  render() {
+    return (
+      <div>
+        <h2>Type in a new Message:</h2>
+        <input
+          value={this.state.input}
+          onChange={this.handleChange}/><br/>
+        <button onClick={this.submitMessage}>Submit</button>
+        <ul>
+{/*this.state.messages thành this.props.messages vì messages nhận từ prop chứ k phải local state*/}
+          {this.props.messages.map( (message, idx) => {
+              return (
+                 <li key={idx}>{message}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
+    );
+  }
+};
+// Change code above this line
+
+const mapStateToProps = (state) => {// gửi state cần đưới dạng prop đến react
+  return {messages: state}
+};
+
+const mapDispatchToProps = (dispatch) => {//gửi hàm xử lí hd dạng prop đến react
+  return {
+    submitNewMessage: (message) => {//gửi action creator để xli hành động trong react bằng reducer của redux
+      dispatch(addMessage(message))
+    }
+  }
+};
+
+const Container = connect(mapStateToProps, mapDispatchToProps)(Presentational);//kết nối redux đến react component
+
+class AppWrapper extends React.Component {//wrapper để gói provider với react component
+  render() {
+{/* truyền store dạng prop vào component cần*/}
+    return (
+      <Provider store={store}>
+        <Container/>
+      </Provider>
+    );
+  }
+};

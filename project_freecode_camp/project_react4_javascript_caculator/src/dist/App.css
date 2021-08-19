@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono");
+@font-face {
+  font-family: "Digital";
+  src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot");
+  src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff") format("woff"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.svg#Digital-7") format("svg");
+}
+body {
+  background: #c2c2d6;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+body #root {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body #root #contain {
+  border: 2px solid #47476b;
+  padding: 5px;
+  background: black;
+  width: 320px;
+  position: relative;
+}
+body #root #contain #formula {
+  min-height: 20px;
+  font-size: 20px;
+  font-family: digital;
+  color: orange;
+  text-align: right;
+  vertical-align: text-top;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  border-bottom: 1px solid #c2c2d6;
+}
+body #root #contain #display {
+  font-size: 29px;
+  margin: 0;
+  font-family: digital;
+  color: white;
+  text-align: right;
+}
+body #root #contain #keyboard button {
+  position: relative;
+  height: 65px;
+  width: 80px;
+  color: white;
+  outline: 1px solid black;
+  border: none;
+  background: #4d4d4d;
+  font-family: Share Tech Mono, monospace;
+  font-size: 20px;
+  cursor: default;
+}
+body #root #contain #keyboard button:hover {
+  color: black;
+  outline: 0.05em solid grey;
+  z-index: 3;
+}
+body #root #contain #keyboard .big {
+  width: 160px;
+}
+body #root #contain #keyboard #clear {
+  background-color: #ac3939;
+}
+body #root #contain #keyboard #fix {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+body #root #contain #keyboard #switch {
+  background-color: #03806b;
+}
+body #root #contain #keyboard #operator button {
+  background-color: #666666;
+}
+body #root #contain #keyboard #equals {
+  background-color: #004466;
+}
+
+@media screen and (max-width: 650px) {
+  #root {
+    width: 340px;
+  }
+}

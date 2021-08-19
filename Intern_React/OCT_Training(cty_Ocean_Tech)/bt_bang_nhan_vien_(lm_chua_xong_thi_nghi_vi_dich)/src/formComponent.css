@@ -1,0 +1,30 @@
+form{
+    position: absolute;
+    z-index: 1;
+    top:30%;
+    left:40%;
+    margin:5px;
+    padding: 5px;
+    border:1px solid black;
+    box-shadow: -2px 2px 5px 0.5px;
+    border-radius: 2%;
+    width: 15em;
+    background-color:rgb(240, 236, 236);
+}
+#contain-input{
+    display: flex;
+    height: 20em;
+    flex-direction: column;
+}
+#btn-del{
+    position:absolute;
+    background-color: red;
+    margin:0;
+    left:90%;
+    box-sizing: border-box;
+    padding: 0;
+    width: 1.2em;
+}
+#btn-save{
+    float:right;
+}

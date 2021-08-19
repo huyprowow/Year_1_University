@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="myCanvas">
+        <p>Add suitable fallback here.</p>
+    </canvas>
+
+    <script>
+        const canvas = document.querySelector('.myCanvas');
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+        const ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = 'rgb(0,0,0)';
+        ctx.fillRect(0, 0, width, height);
+
+        /* Nói chung, quá trình thực hiện một hoạt ảnh canvas bao gồm các bước sau:
+
+          -Xóa nội dung canvas(ví dụ: với .fillRect() hoặc .clearRect()).
+          -Lưu trạng thái(nếu cần) bằng cách sử dụng .save() -
+        điều này cần thiết khi bạn muốn lưu cài đặt bạn đã cập nhật trên canvas trước khi tiếp tục,
+        điều này hữu ích cho các ứng dụng nâng cao hơn.
+          -Vẽ đồ họa bạn đang tạo hoạt ảnh.
+          -Khôi phục cài đặt bạn đã lưu ở bước 2, sử dụng .restore()
+          -Gọi requestAnimationFrame() để lên lịch vẽ khung tiếp theo của hoạt ảnh.*/
+
+        //dat goc toa do o giua man hinh
+        ctx.translate(width / 2, height / 2);
+        //tao anh, khi load xong goi ham draw
+        let image = new Image();
+        image.src = 'walk-right.png';
+        image.onload = draw;
+
+        //them 1 so bien de theo doi vi tri sprite dc ve tren man hinh va so sprite muon ht
+        let sprite = 0;
+        let posX = 0;
+        /* ve hinh anh 'walk-right.png'
+        Nó chứa sáu hình cầu tạo nên toàn bộ chuỗi đi bộ
+         -mỗi anh có chiều rộng 102 pixel và chiều cao 148 pixel
+         .Để hiển thị rõ ràng từng sprite,chúng ta sẽ phải 
+        sử dụng drawImage() để cắt một hình ảnh sprite duy nhất khỏi spritesheet
+        chỉ hiển thị phần đó,giống như chúng ta đã làm ở trên với logo Firefox
+         .Tọa độ X của lát cắt sẽ phải là bội số của 102 và tọa độ Y sẽ luôn là 0
+        =>Kích thước lát cắt sẽ luôn là 102 x 148 pixel*/
+
+        function draw() {
+            //xoa canvas de ve khung
+            //luu y vi tri goc tren cung be trai la -(width/2),-(height/2)  vi goc to do di chuyen ve giua
+            ctx.fillRect(-(width / 2), -(height / 2), width, height);
+            //ve hinh anh bang drawImage gom:
+            //anh,toa do goc trai lat cat(x:102*sprite(0-5)), kich thuoc cat (102,148)
+            //toa do goc ve lat cat(0+posX) thay doi gt posX,kich thuoc ve
+            ctx.drawImage(image, (sprite * 102), 0, 102, 148, 0 + posX, -74, 102, 148);
+            //thay doi sprite sau moi lan ve
+            if (posX % 13 === 0) { //moi 13 khung hình ms cập nhật sprite(khoang 5frame/)
+                if (sprite === 5) { //neu la sprite cuoi(5) => sat spri ve lai 0
+                    sprite = 0;
+                } else {
+                    sprite++;
+                }
+            }
+            //nham giam toc do khung hinh vi request qua nhanh 60 => dc qua nhanh
+
+            //thay doi posX tren moi khung
+            if (posX > width / 2) { //nhan vat di ra khoi mep phai man hinh
+                //dich ve ben trai khung hinh (+102 la de no lui lai di tu khung trai sang)
+                let newStartPos = -((width / 2) + 102);
+                posX = Math.ceil(newStartPos);
+                console.log(posX);
+            } else {
+                posX += 2; //di chuyen khung hinh
+            }
+            window.requestAnimationFrame(draw);
+        }
+    </script>
+</body>
+
+</html>

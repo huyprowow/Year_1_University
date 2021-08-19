@@ -1,0 +1,27 @@
+button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 5%;
+}
+div {
+  text-align: center;
+  padding: 25px;
+  background-color: aqua;
+}
+p {
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 100px;
+}
+#start_btn {
+  background-color: rgb(24, 248, 24);
+  float: left;
+}
+#stop_btn {
+  background-color: rgb(250, 70, 70);
+}
+#reset_btn {
+  background-color: rgb(255, 255, 32);
+  float: right;
+}

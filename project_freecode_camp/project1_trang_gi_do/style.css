@@ -1,0 +1,46 @@
+  body{
+    background-color:hsl(gray);
+    font-family:"Arial" ,sans-serif;
+  }
+
+  img{
+     display: inherit;
+     margin: auto;
+     max-width: 647px;
+   
+  }
+
+  header{
+    text-align: center;
+   
+  }
+
+  h1{
+    font-size: 40px;
+  }
+
+  ul{
+    margin: 0 120px 0 130px;
+  }
+
+  li{
+  padding: 10px 0px 10px 0 ;
+  }
+
+  footer{
+  text-align: center;
+  }
+
+  #img-div{
+    background-color: white;
+  }
+  
+  #img-caption{
+    text-align: center;
+    font-size: 13px;
+  }
+
+  #p-title{
+    text-align: center;
+    font-size: 20px;
+  }

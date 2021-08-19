@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="myCanvas">
+        <!--co the them width height neu muon,mac dinh la rong 300, cao 150-->
+        <p>Add suitable fallback here</p>
+    </canvas>
+    <script>
+        //tl,dat canvas = chieu rong khung nhin
+        const canvas = document.querySelector('.myCanvas');
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+        //lay boi canh
+        const ctx = canvas.getContext('2d'); //con gitri khac la webgl,webgl2
+        //bay h ctx chua 1 dt CanvasRenderingContext2D
+        ctx.fillStyle = 'rgb(0,0,0)'; //thiet lap mau to
+        ctx.fillRect(0, 0, width, height); //ve hinh cn baophu toan bo web (0,0)->(width,height) 
+
+        //ve 2 hinh vuong
+        ctx.fillStyle = 'rgb(255,0,0)';
+        ctx.fillRect(50, 50, 100, 100);
+        //cac hinh co the de len nhau nen can chu y thu tu ve
+        ctx.fillStyle = 'rgb(0,255,0)';
+        ctx.fillRect(75, 75, 100, 100);
+        //co the ve do hoa nua trong suot bang rgba()
+        ctx.fillStyle = 'rgba(255,0,255,0.75)';
+        ctx.fillRect(25, 100, 175, 50); //toan do goc,do dai
+
+        ctx.fillStyle = '#aaaaaa';
+        ctx.fillRect(width - 50, height - 50, 25, 25)
+
+        //net va do rong dong
+        //chu nhat rong
+        ctx.strokeStyle = 'rgb(255,255,255)';
+        ctx.lineWidth = 5; //chiet rong net ve(stroke)
+        ctx.strokeRect(25, 25, 175, 200);
+    </script>
+</body>
+
+</html>

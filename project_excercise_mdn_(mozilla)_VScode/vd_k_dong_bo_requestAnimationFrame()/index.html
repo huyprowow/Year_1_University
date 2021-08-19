@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>requestAnimationFrame test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>↻</div>
+    <!-- &#8635;
+    &#x21BB;
+    &circlearrowright; 
+    -->
+    <script>
+        const spinner = document.querySelector('div');
+        let rotateCount = 0;
+        let startTime = null;
+        let rAF;
+
+        let isSpinner = false;
+
+        function draw(timeStamp) {
+            if (!startTime) {
+                startTime = timeStamp;
+            }
+
+            rotateCount = (timeStamp - startTime) / 3;
+            rotateCount %= 360;
+
+            spinner.style.transform = `rotate(${rotateCount}deg)`;
+            isSpinner = true;
+            rAF = requestAnimationFrame(draw);
+        }
+
+        document.body.addEventListener('click', function () {
+            if (isSpinner) {
+                cancelAnimationFrame(rAF);
+                isSpinner = false;
+            }
+        });
+
+        // spinner.addEventListener('mouseenter', () => {
+        //     cancelAnimationFrame(rAF);
+        // });
+        // spinner.addEventListener('mouseleave', () => {
+        //     draw();
+        // });
+        draw();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+#btn-export{
+    position: relative;
+    top:2em;
+    right:23%;
+    bottom: 1em;
+    width:10%;
+    float:right;
+}
+@media (max-width:780px) {
+    #btn-export{
+        width:22%;
+        top:-1em;
+        right:3em;
+    }
+}

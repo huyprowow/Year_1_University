@@ -1,0 +1,92 @@
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+body {
+  background: url("../img/miku.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.inner-container {
+  display: flex;
+  transform: scale(1.2);
+  width: 660px;
+  text-align: center;
+}
+.inner-container .pad-bank {
+  width: 332px;
+  height: 272px;
+  display: inline-block;
+  margin: 20px;
+}
+.inner-container .pad-bank .drum-pad {
+  color: aqua;
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 80px;
+  margin-right: 10px;
+  border-radius: 5px;
+  padding-top: 35px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.inner-container .controls-container {
+  width: 240px;
+  height: 272px;
+  display: inline-block;
+  margin: 40px 20px 0 10px;
+  vertical-align: top;
+  font-weight: bold;
+  font-size: 20px;
+  color: #0cd4d4;
+  text-shadow: 2px 2px #233d01;
+}
+.inner-container .controls-container .control {
+  width: 100px;
+  margin: auto;
+}
+.inner-container .controls-container .control p {
+  margin-bottom: 0;
+}
+.inner-container .controls-container #display {
+  width: 200px;
+  border: 1px solid black;
+  background-color: white;
+  margin: 15px auto;
+  padding: 15px;
+  box-sizing: border-box;
+  color: black;
+  text-shadow: none;
+}
+
+.outer-select, .inner-container .controls-container .control .select {
+  margin: auto;
+  border: 1px solid #529cfc;
+  border-radius: 34px;
+  width: 50px;
+  height: 20px;
+  padding: 1px;
+  background-color: white;
+}
+
+.inner-select, .inner-container .controls-container .control .select .inner {
+  width: 23px;
+  height: 19px;
+  border-radius: 50%;
+  background: #51d7f8;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+  .inner-container {
+    transform: scale(0.9);
+  }
+}

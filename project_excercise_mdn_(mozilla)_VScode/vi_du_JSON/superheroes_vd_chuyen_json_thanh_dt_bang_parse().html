@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://mdn.github.io/learning-area/javascript/oojs/json/heroes-finished-json-parse.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <title>Our superheroes</title>
+
+    <link href="./superheroes_vd_chuyen_json_thanh_dt_bang_parse()_files/css" rel="stylesheet">
+    <link rel="stylesheet" href="./superheroes_vd_chuyen_json_thanh_dt_bang_parse()_files/style.css">
+  </head>
+
+  <body>
+
+      <header>
+
+      <h1>Super Hero Squad</h1><p>Hometown: Metro City // Formed: 2016</p></header>
+
+      <section>
+
+      <article><h2>Molecule Man</h2><p>Secret identity: Dan Jukes</p><p>Age: 29</p><p>Superpowers:</p><ul><li>Radiation resistance</li><li>Turning tiny</li><li>Radiation blast</li></ul></article><article><h2>Madame Uppercut</h2><p>Secret identity: Jane Wilson</p><p>Age: 39</p><p>Superpowers:</p><ul><li>Million tonne punch</li><li>Damage resistance</li><li>Superhuman reflexes</li></ul></article><article><h2>Eternal Flame</h2><p>Secret identity: Unknown</p><p>Age: 1000000</p><p>Superpowers:</p><ul><li>Immortality</li><li>Heat Immunity</li><li>Inferno</li><li>Teleportation</li><li>Interdimensional travel</li></ul></article></section>
+
+    <script>
+    const header = document.querySelector('header');
+    const section = document.querySelector('section');
+
+    let requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+    let request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'text';
+    request.send();
+
+    request.onload = function() {
+      const superHeroesText = request.response;
+      const superHeroes = JSON.parse(superHeroesText);
+      populateHeader(superHeroes);
+      showHeroes(superHeroes);
+    }
+
+    function populateHeader(jsonObj) {
+      const myH1 = document.createElement('h1');
+      myH1.textContent = jsonObj['squadName'];
+      header.appendChild(myH1);
+
+      const myPara = document.createElement('p');
+      myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
+      header.appendChild(myPara);
+    }
+
+    function showHeroes(jsonObj) {
+      const heroes = jsonObj['members'];
+
+      for(let i = 0; i < heroes.length; i++) {
+        const myArticle = document.createElement('article');
+        const myH2 = document.createElement('h2');
+        const myPara1 = document.createElement('p');
+        const myPara2 = document.createElement('p');
+        const myPara3 = document.createElement('p');
+        const myList = document.createElement('ul');
+
+        myH2.textContent = heroes[i].name;
+        myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
+        myPara2.textContent = 'Age: ' + heroes[i].age;
+        myPara3.textContent = 'Superpowers:';
+
+        const superPowers = heroes[i].powers;
+        for(let j = 0; j < superPowers.length; j++) {
+          const listItem = document.createElement('li');
+          listItem.textContent = superPowers[j];
+          myList.appendChild(listItem);
+        }
+
+        myArticle.appendChild(myH2);
+        myArticle.appendChild(myPara1);
+        myArticle.appendChild(myPara2);
+        myArticle.appendChild(myPara3);
+        myArticle.appendChild(myList);
+
+        section.appendChild(myArticle);
+      }
+    }
+    </script>
+  
+
+</body></html>

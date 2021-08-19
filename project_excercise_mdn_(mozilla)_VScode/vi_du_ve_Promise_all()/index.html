@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+</head>
+
+<body>
+    <p>This is my page</p>
+    <script>
+        // let a = fetch(url1);
+        // let b = fetch(url2);
+        // let c = fetch(url3);
+
+        // Promise.all([a, b, c]).then(values => {
+        //     ...
+        // });
+
+        function fetchAndDecode(url, type) {
+            //tim nap tai nguyen tai url
+            return fetch(url).then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    } else {
+                        //tra ve nd phan hoi dc giai ma tuy thuoc vao type(o day la blod va text)
+                        if (type === 'blob') {
+                            return response.blob();
+                        } else if (type === 'text') {
+                            return response.text();
+                        }
+                    }
+                })
+                .catch(e => {
+                    console.log(`There has been a problem with your fetch operation resource "${url}": ` + e
+                        .message);
+                });
+        }
+        //tim nap 3 promise
+        let coffee = fetchAndDecode('coffee.jpg', 'blob');
+        let tea = fetchAndDecode('tea.jpg', 'blob');
+        let description = fetchAndDecode('description.txt', 'text');
+        //Promise.all() chay khi ca ba promise tren thanh cong
+        Promise.all([coffee, tea, description]).then(
+        values => { //values mang cac ket qua cua promise truyen vao(decode response :[coffee-results, tea-results, description-results])
+            console.log(values);
+            //luu tru gtri tra ve tu pro mise vao cac bien,tao doi tuong url tu blob
+            let objectURl1 = URL.createObjectURL(values[0]);
+            let objectURl2 = URL.createObjectURL(values[1]);
+            let descText = values[2];
+
+            //hien thi anh
+            let image2 = document.createElement('img');
+            let image1 = document.createElement('img');
+
+            image2.src = objectURl2;
+            image1.src = objectURl1;
+
+            document.body.appendChild(image2);
+            document.body.appendChild(image1);
+            //hien thi text
+            let para=document.createElement('p');
+            para.textContent=descText;
+            document.body.appendChild(para);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+#search-label {
+  position: relative;
+  top: 5em;
+}
+#search-btn {
+  position: relative;
+  top: 5.2em;
+  margin-left: 5px;
+  width: 3em;
+  height: 2em;
+}
+@media (max-width: 780px) {
+  #search-label {
+    position: relative;
+    top: 2em;
+  }
+  #search-btn {
+    position: relative;
+    top: 2.2em;
+  }
+}

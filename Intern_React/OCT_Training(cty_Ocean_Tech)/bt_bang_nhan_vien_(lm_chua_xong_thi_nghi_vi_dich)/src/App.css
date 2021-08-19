@@ -1,0 +1,107 @@
+button {
+  background-color: #61dafb;
+  border: 2px #37b1d3 solid;
+  padding: 7px;
+}
+button:hover {
+  cursor: pointer;
+}
+
+/* #btn-add {
+  position: relative;
+  top:3em;
+  left:45%;
+} */
+
+table {
+  position: relative;
+  width: 90%;
+  border: #282c34 1px solid;
+  top: 5rem;
+  margin: 0 auto;
+}
+tr:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+tr:hover {
+  background-color: #d3d3d3;
+}
+th {
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  background-color: #61dafb;
+}
+td {
+  text-align: center;
+  padding: 10px;
+}
+table,
+th,
+td {
+  border-left: #282c34 1px solid;
+  border-collapse: collapse;
+}
+#btn-fix {
+  margin-right: 5px;
+}
+/*label,
+
+#search-and-add {
+  position: relative;
+  top: 4rem;
+  left: 10%;
+}
+#add-row {
+  margin-left: 50px;
+}
+#add-row {
+  position: relative;
+}
+#pagination {
+  position: relative;
+  text-align: center;
+  top: 6em;
+}
+.page {
+  text-decoration: none;
+  padding: 8px 16px;
+  color: black;
+}
+.active {
+  text-decoration: none;
+  padding: 8px 16px;
+  color: white;
+  background-color: #2e2bf3;
+}
+.page:hover:not(.active) {
+  background-color: #61dafb;
+}
+i {
+  padding: 10px 16px;
+}
+i:hover {
+  cursor: pointer;
+  background-color: #61dafb;
+} */
+.pagination{
+  position: relative;
+  top:6em;
+  left:40%;
+}
+.pagination a{
+  background-color: #61dafb;
+  border: 1px solid;
+  padding:5px 10px;
+  margin: 0 2px;
+}
+.pagination a:active{
+  text-decoration: none;
+  background-color: #010303;
+  color: #f0f0f0;
+}
+.pagination a:hover{
+  text-decoration: none;
+  background-color: #010303;
+  color: #f0f0f0;
+}

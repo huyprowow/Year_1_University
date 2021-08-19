@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+</head>
+
+<body>
+    <h1>hien thi anh bang promise nao</h1>
+</body>
+<script>
+    fetch('coffee.jpg')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                return response.blob();
+            }
+        })
+        .then(myBlob => {
+            let objectURL = URL.createObjectURL(myBlob);
+            let image = document.createElement('img');
+            image.src = objectURL;
+            document.body.appendChild(image);
+        })
+        .catch(e => {
+            console.log('co van de voi viec fetch: ' + e.message);
+        });
+    // //cai nay viet de biet ve promise :v
+    // let promise = fetch('coffee.jpg');
+    // let promise2 = promise.then(response => {
+    //     if (!response.ok) {
+    //         throw new Error(`HTTP error! status: ${response.status}`);
+    //     } else {
+    //         return response.blob();
+    //         //chuyen doi phan than tho cua phan hoi tim nap va tra ve doi tuong Blob
+    //     }
+    // });
+    // let promise3 = promise2.then(myBlob => {
+    //     let objectURl = URL.createObjectURL(myBlob);
+    //     let image = document.createElement('img');
+    //     image.src = objectURl;
+    //     document.body.appendChild(image);
+    // });
+    // let errorCase = promise3.catch(e => {
+    //     console.log('co 1 so van de voi viec fetch: ' + e.message);
+    // });
+</script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapquest example</title>
+    <style>
+        #map {
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+    <script>
+//         Google Maps thì sao?
+// Google Maps được cho là API bản đồ phổ biến nhất, vậy tại sao chúng tôi không sử dụng nó cho ví dụ về bản đồ của mình?
+// Chúng tôi đã tạo một ví dụ để hướng dẫn cách sử dụng nó, nhưng cuối cùng chúng tôi đã sử dụng Mapquest vì một số lý do:
+// Nó dễ dàng hơn nhiều để bắt đầu. Đối với Google API nói chung, bạn cần tạo tài khoản Google và đăng nhập vào
+// Google Cloud Platform Console để tạo khóa API, v.v. và quá trình này khá phức tạp. Đối với API Google Maps nói riêng,
+// bạn cần cung cấp thẻ tín dụng cho mục đích thanh toán (mặc dù việc sử dụng cơ bản là miễn phí),
+// điều mà chúng tôi cho rằng không được chấp nhận cho một hướng dẫn cơ bản.
+// Chúng tôi muốn cho thấy rằng có những lựa chọn thay thế khác.
+        var L;
+
+        window.onload = function () {
+            L.mapquest.key = 'V6WscYPJktnH6oZHZUDnm0z5dkRJryCU'; //key api mapquest
+            // 'map' tham chieu den pt <div> vs ID map
+            var map = L.mapquest.map('map', {
+                center: [19.8173, 105.594],
+                layers: L.mapquest.tileLayer(
+                    'hybrid'), //cac loai ban do ('map', 'hybrid', 'satellite', 'light', 'dark')
+                zoom: 12
+            });
+            //trinh dieu khien ban do
+            map.addControl(L.mapquest.control({
+                position: 'topright'
+            }));
+            //     Có nhiều loại khác của kiểm soát có sẵn
+            //     ví dụ mapquest.searchControl()và mapquest.satelliteControl(),
+            //      và một số là khá phức tạp và mạnh mẽ. Hãy chơi một vòng và xem bạn có thể nghĩ ra điều gì
+            // map.addControl(L.mapquest.satelliteControl());
+            map.addControl(L.mapquest.searchControl());
+            //danh dau tren map
+            L.marker([19.830421, 105.5956078], //toa do
+                    { //icon diem danh dau
+                        icon: L.mapquest.icons.marker({
+                            primaryColor: '#aa0500',
+                            secondaryColor: '#fa0500',
+                            shadow: true,
+                            size: 'md',
+                            symbol: 'S'
+                        })
+                    })
+                .bindPopup('ts1 School') //nd hien thi khi nhap
+                .addTo(map); //them vao map
+        }
+    </script>
+</head>
+
+<body>
+    <h1>where is my home :)))</h1>
+
+    <div id="map"></div>
+</body>
+
+</html>

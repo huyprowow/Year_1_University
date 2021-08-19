@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+        li {
+            margin-bottom: 10px;
+        }
+
+        li button {
+            font-size: 8px;
+            margin-left: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+        <label for="item">Enter a new item:</label>
+        <input type="text" name="item" id="item">
+        <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        const listItem = document.querySelector('ul');
+        const inputItem = document.querySelector('input');
+        const addBtn = document.querySelector('button');
+
+        addBtn.addEventListener('click', manipulatorAdd);
+
+        function manipulatorAdd() {
+            //lay gtri tu dau vao
+            let valueNameItem = inputItem.value;
+            inputItem.value = '';
+            //tao 3 pt
+            const item = document.createElement('li');
+            const nameItem = document.createElement('span');
+            const delBtn = document.createElement('button');
+            //noi nut,nd thanh con li
+            item.appendChild(nameItem);
+            item.appendChild(delBtn);
+            //dat value cho span bang gia tri nhan tu input
+            nameItem.textContent = valueNameItem;
+            delBtn.textContent = 'delete';
+            //chen item vao listItem
+            listItem.appendChild(item);
+            //xl xoa item khi an
+            delBtn.addEventListener('click', function () {
+                item.remove();
+            });
+            //forcus lai vao input de tiep tuc nhap san pham
+            inputItem.focus();
+        }
+    </script>
+</body>
+
+</html>

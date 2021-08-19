@@ -1,0 +1,28 @@
+a{
+    text-decoration:none;
+    display:flex;
+    
+    color:black;
+  }
+  
+  h1{
+    text-align:center;
+  }
+  
+  #main-doc{
+    margin:0 100px auto;
+  }
+  b{
+      font-size: large;
+  }
+  @media(max-width:1024px){
+    #navbar{
+      position:fixed;
+      display:flex;
+      flex-direction:column;
+      overflow:scroll;
+      left:0; top:0;
+      width:100px;
+      height:100%;
+    }
+  }

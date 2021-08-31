@@ -1,7 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Form from "./formComponent";
-import "./addComponent.css"
+import "../styles/addComponent.css"
 class Add extends React.Component {
     constructor(props) {
         super(props);

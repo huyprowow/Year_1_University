@@ -1,7 +1,7 @@
 import React from "react";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
-import "./ExportCSV.css"
+import "../styles/ExportCSV.css";
 export const ExportCSV = ({ csvData, fileName }) => {
   const fileType =
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";

@@ -1,14 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import "./App.css";
-import Search from "./searchComponent";
-import Add from "./addComponent";
-import EmployeeList from "./employeeList";
-import EmployeeItem from "./employeeItem";
-import callApi from "./callApi";
-import Form from "./formComponent";
-import { ExportCSV } from "./ExportCSV";
+import Search from "./components/searchComponent";
+import Add from "./components/addComponent";
+import EmployeeList from "./components/employeeList";
+import EmployeeItem from "./components/employeeItem";
+import callApi from "./apis/callApi";
+import Form from "./components/formComponent";
+import { ExportCSV } from "./components/ExportCSV";
 import Pagination from 'react-js-pagination'
+import "./App.css";
 
 let idEmployeeEdit = 0;
 class App extends React.Component {

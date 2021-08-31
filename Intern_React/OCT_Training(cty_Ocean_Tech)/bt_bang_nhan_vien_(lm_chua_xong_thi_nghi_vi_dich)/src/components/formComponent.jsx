@@ -1,6 +1,6 @@
 import React from "react";
-import "./formComponent.css";
-import callApi from "./callApi";
+import "../styles/formComponent.css";
+import callApi from "../apis/callApi";
 class Form extends React.Component {
     constructor(props) {
         super(props);
